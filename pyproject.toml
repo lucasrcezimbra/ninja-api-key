@@ -6,7 +6,7 @@ build-backend = "flit_core.buildapi"
 name = "django-ninja-apikey"
 authors = [{name = "Maximilian Wassink", email="wassink.maximilian@protonmail.com"}]
 readme = "README.md"
-requires-python = "~=3.6.2"
+requires-python = ">=3.6.2"
 classifiers = [
     "Environment :: Web Environment",
     "Framework :: Django",
