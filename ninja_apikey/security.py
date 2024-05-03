@@ -35,7 +35,11 @@ def check_apikey(api_key: str) -> Any:
     if not persistent_key:
         return False
 
-    if not check_password(key, persistent_key.hashed_key):
+    def setter(password):
+        persistent_key.hashed_key = make_password(password)
+        persistent_key.save(force_update=True, update_fields=["hashed_key"])
+
+    if not check_password(key, persistent_key.hashed_key, setter=setter):
         return False
 
     if not persistent_key.is_valid:

@@ -3,7 +3,11 @@ from datetime import timedelta
 
 import pytest
 from django.contrib.admin.sites import AdminSite
-from django.contrib.auth.hashers import check_password
+from django.contrib.auth.hashers import (
+    PBKDF2PasswordHasher,
+    check_password,
+    make_password,
+)
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.crypto import get_random_string
@@ -83,3 +87,26 @@ def test_admin_save():
     assert key.prefix
     assert key.hashed_key
     assert key.user == user
+
+
+@pytest.mark.django_db
+def test_check_password_updates_if_hash_changed():
+    class CustomHasher(PBKDF2PasswordHasher):
+        iterations = 1
+
+    key_data = generate_key()
+    hashed_key = make_password(key_data.key, hasher=CustomHasher())
+
+    api_key = APIKey.objects.create(
+        user=User.objects.create_user(username="test", password="test"),
+        prefix=key_data.prefix,
+        hashed_key=hashed_key,
+    )
+
+    check_apikey(f"{key_data.prefix}.{key_data.key}")
+
+    api_key.refresh_from_db()
+    assert api_key.hashed_key != hashed_key
+    assert api_key.hashed_key.startswith(
+        f"pbkdf2_sha256${PBKDF2PasswordHasher.iterations}$"
+    )
