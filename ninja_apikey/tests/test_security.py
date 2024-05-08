@@ -11,9 +11,9 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.crypto import get_random_string
 
-from .admin import APIKeyAdmin
-from .models import APIKey
-from .security import check_apikey, generate_key
+from ninja_apikey.admin import APIKeyAdmin
+from ninja_apikey.models import APIKey
+from ninja_apikey.security import check_apikey, generate_key
 
 
 def test_apikey_validation():
