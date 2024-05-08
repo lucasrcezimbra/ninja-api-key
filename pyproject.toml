@@ -57,3 +57,9 @@ test = [
 
 [tool.flit.module]
 name = "ninja_apikey"
+
+
+[tool.ruff]
+select = ["E", "F", "I"]
+ignore = ["E501"]
+line-length = 88
