@@ -2,6 +2,7 @@
 requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
+
 [project]
 name = "ninja-api-key"
 description = "Django Ninja API Key Authentication"
@@ -51,14 +52,8 @@ test = [
     "pytest",
     "pytest-cov",
     "pytest-django",
-    "black",
-    "isort",
-    "flake8",
-    "flake8-bugbear",
-    "flake8-bandit",
-    "mypy",
-    "django-stubs",
-    ]
+]
+
 
 [tool.flit.module]
 name = "ninja_apikey"
