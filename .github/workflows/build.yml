@@ -7,14 +7,22 @@ on:
     branches:
       - main
 jobs:
-  build:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: pipx install pre-commit
+      - uses: actions/setup-python@v3
+      - run: pre-commit install
+      - run: pre-commit run -a
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-python@v2.2.2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
       - uses: actions/cache@v2.1.6
@@ -27,5 +35,6 @@ jobs:
         run: pip install flit
       - name: Build
         run: make
-      - name: Upload coverage
-        uses: codecov/codecov-action@v2.0.2
+      - uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
