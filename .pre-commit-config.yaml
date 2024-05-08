@@ -1,0 +1,37 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-case-conflict
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-yaml
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: file-contents-sorter
+      - id: mixed-line-ending
+      - id: pretty-format-json
+        args:
+          - --autofix
+      - id: trailing-whitespace
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.3
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+  - repo: https://github.com/psf/black
+    rev: 24.4.2
+    hooks:
+      - id: black
+        types: [python]
+  - repo: https://github.com/google/yamlfmt
+    rev: v0.12.1
+    hooks:
+      - id: yamlfmt
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.6.27
+    hooks:
+      - id: actionlint
