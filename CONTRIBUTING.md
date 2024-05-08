@@ -2,7 +2,7 @@
 
 ## Setup
 
-Django Ninja API key uses Flit to build, package and publish the project. 
+Django Ninja API key uses Flit to build, package and publish the project.
 
 It's recommended to create and activate an virtual environment before installing the project. Simply run
 ```

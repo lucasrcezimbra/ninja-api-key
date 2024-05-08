@@ -27,7 +27,7 @@ This is an unofficial [Django](https://github.com/django/django) app which makes
 **Key Features:**
 - **Easy** integration in your projects
 - Well integrated in the **admin interface**
-- **Secure** API keys due to hashing 
+- **Secure** API keys due to hashing
 - Works with the **standard** user model
 
 ## Installation
@@ -66,7 +66,7 @@ api = NinjaAPI()
 
 @api.get("/secure_endpoint", auth=auth)
 def secure_endpoint(request):
-    return f"Hello, {request.user}!" 
+    return f"Hello, {request.user}!"
 ```
 Or secure your whole api (or a specific [router](https://django-ninja.rest-framework.com/tutorial/routers/)) with the API keys:
 ```Python
@@ -83,7 +83,7 @@ api = NinjaAPI(auth=APIKeyAuth())
 
 @api.get("/secure_endpoint")
 def secure_endpoint(request):
-    return f"Hello, {request.user}!" 
+    return f"Hello, {request.user}!"
 ```
 You can create now API keys from django's admin interface.
 

@@ -14,6 +14,6 @@ If you think you found a vulnerability, and even if you are not sure about it, p
 ## Public Discussions
 To limit the potential impacts of a security vulnerability, please restrain from publicly discussing the issue.
 
---- 
+---
 
 Thanks for your help!

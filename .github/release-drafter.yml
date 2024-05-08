@@ -1,6 +1,5 @@
 name-template: "v$NEXT_PATCH_VERSION"
 tag-template: "v$NEXT_PATCH_VERSION"
-
 categories:
   - title: "Breaking Changes"
     labels: [breaking]
@@ -12,7 +11,6 @@ categories:
     labels: [documentation]
   - title: "Maintenance"
     labels: [maintenance, dependencies]
-
 include-labels:
   - "breaking"
   - "enhancement"
@@ -20,6 +18,5 @@ include-labels:
   - "documentation"
   - "maintenance"
   - "dependencies"
-
 template: |
   $CHANGES
