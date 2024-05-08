@@ -4,6 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "ninja-api-key"
+version = "0.2.2"
 authors = [
   {name = "Lucas Rangel Cezimbra", email="lucas@cezimbra.tec.br"},
   {name = "Maximilian Wassink", email="wassink.maximilian@protonmail.com"},
