@@ -4,9 +4,9 @@ from .models import APIKey
 from .security import generate_key
 
 
-@admin.action(description="Revoke selected API keys")  # type: ignore
+@admin.action(description="Revoke selected API keys")
 def revoke_key(modeladmin, request, queryset):
-    queryset.update(revoked=True)  # pragma: no cover
+    queryset.update(revoked=True)
 
 
 @admin.register(APIKey)
@@ -24,20 +24,20 @@ class APIKeyAdmin(admin.ModelAdmin):
     actions = [revoke_key]
     list_filter = ["revoked"]
 
-    @admin.display  # type: ignore
+    @admin.display
     def is_active(self, obj: APIKey):
-        return obj.is_valid  # pragma: no cover
+        return obj.is_valid
 
-    is_active.boolean = True  # Display property as boolean
+    is_active.boolean = True
 
     def save_model(self, request, obj: APIKey, form, change):
-        if not obj.prefix:  # New API key
+        if not obj.prefix:
             key = generate_key()
             obj.prefix = key.prefix
             obj.hashed_key = key.hashed_key
 
             if request:
-                messages.add_message(  # pragma: no cover
+                messages.add_message(
                     request,
                     messages.WARNING,
                     f"The API key for {obj} is '{key.prefix}.{key.key}'."

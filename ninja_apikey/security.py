@@ -6,7 +6,7 @@ from django.http import HttpRequest
 from django.utils.crypto import get_random_string
 from ninja.security import APIKeyHeader
 
-from .models import APIKey  # type: ignore
+from .models import APIKey
 
 KeyData = namedtuple("KeyData", "prefix key hashed_key")
 
