@@ -8,9 +8,11 @@
 
 API Key authentication for [Django Ninja](https://django-ninja.dev/).
 
+This is a fork from [django-ninja-apikey](https://github.com/mawassk/django-ninja-apikey).
+
 Key Features:
-- Easy integration in your projects
-- Well integrated in the admin interface
+- Easy integration into your projects
+- Well integrated with the Admin interface
 - Secure API keys due to hashing
 - Works with the standard user model
 
