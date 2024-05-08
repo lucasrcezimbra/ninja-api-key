@@ -13,6 +13,6 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v5
       - run: pip install build && python -m build
       - uses: pypa/gh-action-pypi-publish@release/v1
