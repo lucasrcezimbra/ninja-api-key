@@ -3,8 +3,11 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "django-ninja-apikey"
-authors = [{name = "Maximilian Wassink", email="wassink.maximilian@protonmail.com"}]
+name = "ninja-api-key"
+authors = [
+  {name = "Lucas Rangel Cezimbra", email="lucas@cezimbra.tec.br"},
+  {name = "Maximilian Wassink", email="wassink.maximilian@protonmail.com"},
+]
 readme = "README.md"
 requires-python = ">=3.6.2"
 classifiers = [
@@ -40,7 +43,7 @@ dependencies = [
 ]
 
 [project.urls]
-Source = "https://github.com/mawassk/django-ninja-apikey"
+Source = "https://github.com/lucasrcezimbra/ninja-api-key"
 
 [project.optional-dependencies]
 test = [
