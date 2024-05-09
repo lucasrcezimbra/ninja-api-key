@@ -3,6 +3,7 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 
+
 [project]
 name = "ninja-api-key"
 description = "Django Ninja API Key Authentication"
@@ -55,11 +56,14 @@ test = [
 ]
 
 
+
 [tool.flit.module]
 name = "ninja_apikey"
 
 
 [tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
 select = ["E", "F", "I"]
 ignore = ["E501"]
-line-length = 88
