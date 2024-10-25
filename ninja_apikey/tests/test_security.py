@@ -1,35 +1,14 @@
-from datetime import timedelta
-
 import pytest
-from django.contrib.admin.sites import AdminSite
 from django.contrib.auth.hashers import (
     PBKDF2PasswordHasher,
     check_password,
     make_password,
 )
 from django.contrib.auth.models import User
-from django.utils import timezone
 from django.utils.crypto import get_random_string
 
-from ninja_apikey.admin import APIKeyAdmin
 from ninja_apikey.models import APIKey
 from ninja_apikey.security import check_apikey, generate_key
-
-
-def test_apikey_validation():
-    key = APIKey()
-    assert key
-    assert key.is_valid
-    key.revoked = True
-    assert not key.is_valid
-    key.revoked = False
-    assert key.is_valid
-    key.expires_at = timezone.now() - timedelta(minutes=1)
-    assert not key.is_valid
-    key.expires_at = timezone.now() + timedelta(minutes=1)
-    assert key.is_valid
-    key.expires_at = None
-    assert key.is_valid
 
 
 def test_key_generation():
@@ -42,7 +21,7 @@ def test_key_generation():
 
 
 @pytest.mark.django_db
-def test_apikey_check():
+def test_check_apikey():
     assert not check_apikey(None)
     user = User()
     user.name = get_random_string(10)
@@ -69,27 +48,7 @@ def test_apikey_check():
 
 
 @pytest.mark.django_db
-def test_admin_save():
-    admin_site = AdminSite()
-    apikey_admin = APIKeyAdmin(APIKey, admin_site=admin_site)
-    assert admin_site
-    assert apikey_admin
-    user = User()
-    user.name = get_random_string(10)
-    user.password = get_random_string(10)
-    user.save()
-    assert user
-    key = APIKey()
-    key.user = user
-    key = apikey_admin.save_model(request=None, obj=key, form=None, change=None)
-    assert key
-    assert key.prefix
-    assert key.hashed_key
-    assert key.user == user
-
-
-@pytest.mark.django_db
-def test_check_password_updates_if_hash_changed():
+def test_check_apikey_updates_if_hash_changed():
     class CustomHasher(PBKDF2PasswordHasher):
         iterations = 1
 
