@@ -5,7 +5,7 @@ from django.utils import timezone
 
 class APIKey(models.Model):
     prefix = models.CharField(max_length=8, primary_key=True)
-    hashed_key = models.CharField(max_length=100)
+    hashed_key = models.CharField(max_length=128)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     label = models.CharField(max_length=40)
     revoked = models.BooleanField(default=False)

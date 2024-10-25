@@ -50,6 +50,7 @@ Source = "https://github.com/lucasrcezimbra/ninja-api-key"
 
 [project.optional-dependencies]
 test = [
+    "django[argon2,bcrypt]",
     "pytest",
     "pytest-cov",
     "pytest-django",
