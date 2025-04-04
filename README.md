@@ -42,47 +42,65 @@ python manage.py migrate
 
 3. Secure
 
-a. the whole API
-```Python
-# api.py
+    a. the whole API
+    ```Python
+    # api.py
+    
+    from ninja import NinjaAPI
+    from ninja_apikey.security import APIKeyAuth
+    
+    #  ...
+    
+    api = NinjaAPI(auth=APIKeyAuth())
+    
+    # ...
+    
+    @api.get("/secure_endpoint")
+    def secure_endpoint(request):
+        return f"Hello, {request.user}!"
+    ```
+    
+    b. an specific endpoint
+    ```Python
+    # api.py
+    
+    from ninja import NinjaAPI
+    from ninja_apikey.security import APIKeyAuth
+    
+    #  ...
+    
+    auth = APIKeyAuth()
+    api = NinjaAPI()
+    
+    # ...
+    
+    @api.get("/secure_endpoint", auth=auth)
+    def secure_endpoint(request):
+        return f"Hello, {request.user}!"
+    ```
 
-from ninja import NinjaAPI
-from ninja_apikey.security import APIKeyAuth
 
-#  ...
+4. ninja-api-key uses `settings.PASSWORD_HASHERS` to hash the API keys.
+   Django's default `PBKDF2PasswordHasher` may be slow depending on the number
+   of iterations. You can change the `settings.PASSWORD_HASHERS` to
+   use a faster (but less secure) one. ninja-api-key provides a `SHA256PasswordHasher`.
 
-api = NinjaAPI(auth=APIKeyAuth())
+   ```python
+    # settings.py
 
-# ...
+    PASSWORD_HASHERS = [
+        "ninja_apikey.hashers.SHA256PasswordHasher",
+        # others
+    ]
+    ```
 
-@api.get("/secure_endpoint")
-def secure_endpoint(request):
-    return f"Hello, {request.user}!"
-```
-
-b. an specific endpoint
-```Python
-# api.py
-
-from ninja import NinjaAPI
-from ninja_apikey.security import APIKeyAuth
-
-#  ...
-
-auth = APIKeyAuth()
-api = NinjaAPI()
-
-# ...
-
-@api.get("/secure_endpoint", auth=auth)
-def secure_endpoint(request):
-    return f"Hello, {request.user}!"
-```
+    ⚠️ Keep in mind that this will affect Django authentication as a whole,
+       not just ninja-api-key.
 
 
 ## Contributing
 
-Contributions are welcome, feel free to open an Issue or Pull Request.
+Contributions are welcome; feel free to open an Issue or Pull Request.
 
 ```
 git clone https://github.com/lucasrcezimbra/ninja-api-key
