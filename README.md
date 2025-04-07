@@ -45,35 +45,35 @@ python manage.py migrate
     a. the whole API
     ```Python
     # api.py
-    
+
     from ninja import NinjaAPI
     from ninja_apikey.security import APIKeyAuth
-    
+
     #  ...
-    
+
     api = NinjaAPI(auth=APIKeyAuth())
-    
+
     # ...
-    
+
     @api.get("/secure_endpoint")
     def secure_endpoint(request):
         return f"Hello, {request.user}!"
     ```
-    
+
     b. an specific endpoint
     ```Python
     # api.py
-    
+
     from ninja import NinjaAPI
     from ninja_apikey.security import APIKeyAuth
-    
+
     #  ...
-    
+
     auth = APIKeyAuth()
     api = NinjaAPI()
-    
+
     # ...
-    
+
     @api.get("/secure_endpoint", auth=auth)
     def secure_endpoint(request):
         return f"Hello, {request.user}!"
