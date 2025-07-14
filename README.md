@@ -98,6 +98,10 @@ python manage.py migrate
        not just ninja-api-key.
 
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a detailed history of changes and releases.
+
 ## Contributing
 
 Contributions are welcome; feel free to open an Issue or Pull Request.
