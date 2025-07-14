@@ -63,6 +63,20 @@ This is a Django package that provides API Key authentication for [Django Ninja]
 6. Ensure associated user is active
 7. Set `request.user` and return user object
 
+## Documentation Guidelines
+
+### Changelog Maintenance
+- **Always** include detailed descriptions of changes in the CHANGELOG.md
+- Follow [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
+- Categorize changes as follows:
+  - **Features**: for new features and functionality
+  - **Fixes**: for bug fixes and corrections
+  - **Internal**: for development-related changes (refactoring, tooling, CI/CD, dependencies)
+- **Breaking Changes**: Flag any breaking changes clearly in the description
+- Add entries to the `[Unreleased]` section until a new version is released
+- Use clear, descriptive language that helps users understand the impact of changes
+- Include relevant issue/PR references when applicable
+
 ## Common Use Cases
 
 ### Basic API Protection
