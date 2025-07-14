@@ -55,6 +55,9 @@ test = [
     "pytest-cov",
     "pytest-django",
 ]
+dev = [
+    "pre-commit",
+]
 
 
 
