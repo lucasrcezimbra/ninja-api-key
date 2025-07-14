@@ -8,7 +8,7 @@
 
 ## [1.0.2] - 2024-07-14
 
-### Fixes
+### Fixed
 - Increase APIKey.hashed_key max_length
 
 ### Internal
@@ -16,11 +16,12 @@
 - pre-commit autoupdate
 
 ## [1.0.0] - 2024-05-09
-### Features
+
+### Added
 - Updates password when checking
 - Add SHA256 password hashers
 
-### Fixes
+### Fixed
 - Unpin Python version - now requires >=3.6.2
 
 ### Internal
@@ -29,6 +30,5 @@
 - Reorganize dependencies
 
 [Unreleased]: https://github.com/lucasrcezimbra/ninja-api-key/compare/v1.0.2...HEAD
-[1.0.2]: https://github.com/lucasrcezimbra/ninja-api-key/compare/v1.0.1...v1.0.2
-[1.0.1]: https://github.com/lucasrcezimbra/ninja-api-key/compare/v1.0.0...v1.0.1
+[1.0.2]: https://github.com/lucasrcezimbra/ninja-api-key/compare/v1.0.0...v1.0.2
 [1.0.0]: https://github.com/lucasrcezimbra/ninja-api-key/releases/tag/v1.0.0
