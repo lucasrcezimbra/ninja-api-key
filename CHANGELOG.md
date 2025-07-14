@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Internal
+* Add copilot-instructions and copilot-setup-steps for GitHub Copilot
+* pre-commit autoupdates
+
 ## [1.0.2] - 2024-07-14
 
 ### Fixes
