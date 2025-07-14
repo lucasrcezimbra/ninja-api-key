@@ -1,7 +1,9 @@
 .DEFAULT_GOAL := build
 
 install: # Install dependencies
-	flit install --deps develop --symlink
+	flit install --deps develop --symlink --extras dev
+	pre-commit install
+	pre-commit install-hooks
 
 fmt format: # Run code formatters
 	isort --profile black .
