@@ -65,3 +65,22 @@ def test_hashed_key_max_length(hasher):
 
     assert api_key
     assert len(encoded) <= 128
+
+
+@pytest.mark.django_db
+def test_api_key_str_uses_get_username(monkeypatch):
+    """
+    Non-regression test ensuring APIKey.str uses get_username(),
+    preventing crashes with custom USERNAME_FIELD
+    """
+    # Simulate a project where USERNAME_FIELD is 'email'
+    monkeypatch.setattr(User, "USERNAME_FIELD", "email")
+
+    user = User.objects.create_user(
+        username="name1", password="x", email="name2@example.com"
+    )
+    prefix = "prefix"
+
+    api_key = APIKey.objects.create(user=user, prefix=prefix, hashed_key="hash")
+
+    assert str(api_key) == f"name2@example.com<{prefix}>"
