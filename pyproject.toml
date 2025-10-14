@@ -7,7 +7,7 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "ninja-api-key"
 description = "Django Ninja API Key Authentication"
-version = "1.0.2"
+version = "1.0.3"
 authors = [
   {name = "Lucas Rangel Cezimbra", email="lucas@cezimbra.tec.br"},
   {name = "Maximilian Wassink", email="wassink.maximilian@protonmail.com"},

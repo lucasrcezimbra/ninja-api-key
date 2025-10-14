@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+## [1.0.3] - 2025-10-14
+### Fixed
+- String representation of APIKey model to use `get_username()`
+
+### Docs
+- Add CHANGELOG.md
+- Update README.md
+
 ### Internal
 * Add copilot-instructions and copilot-setup-steps for GitHub Copilot
 * pre-commit autoupdates
@@ -29,6 +37,7 @@
 - Fix CI/CD and update actions
 - Reorganize dependencies
 
-[Unreleased]: https://github.com/lucasrcezimbra/ninja-api-key/compare/v1.0.2...HEAD
-[1.0.2]: https://github.com/lucasrcezimbra/ninja-api-key/compare/v1.0.0...v1.0.2
-[1.0.0]: https://github.com/lucasrcezimbra/ninja-api-key/releases/tag/v1.0.0
+[Unreleased]: https://github.com/lucasrcezimbra/ninja-api-key/compare/1.0.3...HEAD
+[1.0.3]: https://github.com/lucasrcezimbra/ninja-api-key/compare/1.0.2...1.0.3
+[1.0.2]: https://github.com/lucasrcezimbra/ninja-api-key/compare/1.0.0...1.0.2
+[1.0.0]: https://github.com/lucasrcezimbra/ninja-api-key/releases/tag/1.0.0
